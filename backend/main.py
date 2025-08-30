@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from model import UserRegister,UserLogin
 from fastapi.middleware.cors import CORSMiddleware
 from DB import user_collection
-from bson import ObjectId
 app = FastAPI()
 origins = [
     "http://localhost:5173",   # Vite dev server
