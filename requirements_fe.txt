@@ -1,0 +1,6 @@
+#frontend
+create vite@latest frontend
+axios
+lucide-react
+react-icons
+canvas-confetti
