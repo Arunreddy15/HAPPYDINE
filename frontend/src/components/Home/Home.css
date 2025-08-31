@@ -37,27 +37,43 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 420px;
+    height: 100%;
 }
-
+.content-right{
+  position: relative;  
+}
+.home-heading{
+    font-size: 45px;
+}
 .one{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
     height: 410px;
     width: 410px;
     border-radius: 50%;
     border: 45px solid antiquewhite;
     background-color: transparent;
-    /* padding-top: 8px; */
-    transition: transform 1s ease;
+    transition: transform 2s ease;
+    /* z-index: 1; */
 }
 .one:hover{
      transform: rotate(360deg);  
 }
+.tagline{
+    position: absolute;
+    font-weight: 600;
+    bottom: 2%;
+    left: 17.5%;
+    z-index: 2;
+    font-family: "Bodoni Moda", serif;   
+}
 .main-img{
+    position: absolute;
+    z-index:2 ;
+    top: 9.5%;
+    left: 9.5%;
     height: 400px;
     margin:0 3px 5px 0;
 }
@@ -73,7 +89,7 @@
 }
 .pizza{
     position: absolute;
-    right: -20%;
+    right: -19.5%;
     top: 39%;
 }
 .mutton{

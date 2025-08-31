@@ -20,8 +20,8 @@ export default function LaunchPage() {
         <div className="inner-container-body">
             <div className="content-left">
                 <div>
-                <h1>Your Culinary </h1>
-                <h1>Adventure Awaits</h1>
+                <h1 className="home-heading">Your Culinary </h1>
+                <h1 className="home-heading">Adventure Awaits</h1>
                 <p>We are commited to serve you best food in the town. We can come to our place or also can order online</p>
                 <button>Get Started <MdOutlineArrowRightAlt/></button></div>
                 <div className="review-container">
@@ -50,8 +50,9 @@ export default function LaunchPage() {
             </div>
             <div className="content-right">
                 <span></span>
-                <div className="one">
                     <img src={Chicken} className="main-img"/>
+                    <p className="tagline">Let your food wait's for you from now!...</p>
+                <div className="one">
                     <img src={Samosa} height='60' className="samosa"/>
                     <img src={Biryani} height='60' className="biryani"/>
                     <img src={Pizza} height='60' className="pizza"/>
