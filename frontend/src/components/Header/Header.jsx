@@ -8,7 +8,7 @@ function Header(){
 
     return(
         <div className="Header-contianer">
-            <h2>HappyDine</h2>
+            <h2 className="logo">HappyDine</h2>
             <ul>
                 <NavLink to="/" className={linkClasses}>
                     Home
