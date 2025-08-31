@@ -79,9 +79,9 @@ function Register() {
     }
   };
   return (
-    <>
+    <div className='Register-container'>
     <div className="register-form">
-      <h3>User Register</h3>
+      <h3>Sign Up Here!</h3>
       <div className="userpass_con">
         <input type="email" value={email} className='' placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)}/>
         <Mail />
@@ -92,12 +92,13 @@ function Register() {
       </div>
       <div className="userpass_con">
         <input type={isOn&&"password"||"text"}  value={password} className='' placeholder='Enter Password' onChange={(e)=>setPassword(e.target.value)}/>
-        <button onClick={toggle}>{isOn&&< LuEyeClosed size={22}/>||<LuEye size={22}/>}</button>
+        <button onClick={toggle}>{isOn&&< LuEyeClosed size={22} color={'#242424'}/>||<LuEye size={22} color={'#242424'}/>}</button>
       </div>
       {successmsg&& <p className='successmsg'>{successmsg}</p>||errormsgup&& <p className='errormsg'>{errormsgup}</p>||<p className='errormsg'>{errormsg}</p>}
       <button className="submitbtn" onClick={RegisterUser}>Submit</button>
+      <span>Already have an account? <a href='./UserLogin'>Sign In</a></span>
     </div>
-    </>
+    </div>
   )
 }
 

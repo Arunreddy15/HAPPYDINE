@@ -1,0 +1,62 @@
+import React from "react";
+import { FaLinkedinIn,FaYoutube,FaInstagram ,FaRegClock } from "react-icons/fa";
+import { MdOutlineArrowRightAlt } from "react-icons/md";
+import "./Home.css"
+import Samosa from '../images/Samosa.png'
+import Biryani from "../images/biryani.png"
+import Pizza from '../images/pizza.png'
+import Chicken from '../images/chicken.png'
+import Wings from '../images/wings.png'
+import Header from "../Header/Header";
+export default function LaunchPage() {
+  return (
+  <>
+    <div className="Home-container">
+        <div className="inner-container">
+            <Header className='HEADER'/>
+        <div className="inner-container-body">
+            <div className="content-left">
+                <div>
+                <h1>Your Culinary </h1>
+                <h1>Adventure Awaits</h1>
+                <p>We are commited to serve you best food in the town. We can come to our place or also can order online</p>
+                <button>Get Started <MdOutlineArrowRightAlt/></button></div>
+                <div className="discount-coupon">
+                    <div className="dc-heading">
+                        <p>Discount Coupon</p>
+                        <p>Next</p>
+                    </div>
+                    <div className="dc-body">
+                        <div className="dc-body-name">
+                            <img src={Wings} height='80'/>
+                            <div>
+                                <h3>Chicken Wings</h3>
+                                <p>90 Calories</p>
+                            </div>
+                        </div>
+                        <p>300/-</p>
+                        <a><FaRegClock color="white"/> <p>30 min</p></a>
+                    </div>
+                </div>
+            </div>
+            <div className="content-right">
+                <span></span>
+                <div className="one">
+                    <img src={Chicken} className="main-img"/>
+                    <img src={Samosa} height='60' className="samosa"/>
+                    <img src={Biryani} height='60' className="biryani"/>
+                    <img src={Pizza} height='60' className="pizza"/>
+                </div>
+            </div>
+            <div className="content-right-social">
+                <FaYoutube size={20}/>
+                <FaInstagram size={20}/>
+                <FaLinkedinIn size={20}/>
+                <span>Follow <br></br>Us</span>
+            </div>
+        </div>
+        </div>
+    </div>
+    </>
+  );
+}

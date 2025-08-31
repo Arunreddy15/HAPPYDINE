@@ -54,21 +54,22 @@ function Login() {
     }
   };
   return (
-    <>
+    <div className='Login-container'>
     <div className="login-form">
-      <h3>User Login</h3>
+      <h3>Sign In Here!</h3>
       <div className="userpass_con">
         <input type="text"  value={username} className='' placeholder='Enter Username' onChange={(e)=>setUsername(e.target.value)}/>
         <User/>
       </div>
       <div className="userpass_con">
         <input type={isOn&&"password"||"text"}  value={password} className='' placeholder='Enter Password' onChange={(e)=>setPassword(e.target.value)}/>
-        <button onClick={toggle}>{isOn&&< LuEyeClosed size={22}/>||<LuEye size={22}/>}</button>
+        <button onClick={toggle}>{isOn&&< LuEyeClosed size={22} color={'#242424'}/>||<LuEye size={22} color={'#242424'}/>}</button>
       </div>
       {successmsg?(<p className='successmsg'>{successmsg}</p>):(errormsgup&& <p className='errormsg'>{errormsgup}</p>||<p className='errormsg'>{errormsg}</p>)}
       <button className="submitbtn" onClick={LoginUser}>Submit</button>
+      <span>Not have an account? <a href='./UserRegister'>Sign Up</a></span>
     </div>
-    </>
+    </div>
   )
 }
 
