@@ -1,5 +1,6 @@
 import "./Header.css"
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import {REGISTER,LOGIN,HOME,ABOUT,CONTACT} from '../../routes/AppRoutes'
 function Header(){
     const linkClasses = ({ isActive }) =>
     isActive
@@ -10,20 +11,17 @@ function Header(){
         <div className="Header-contianer">
             <h2 className="logo">HappyDine</h2>
             <ul>
-                <NavLink to="/" className={linkClasses}>
+                <NavLink to={HOME} className={linkClasses}>
                     Home
                 </NavLink>
-                <NavLink to="/about" className={linkClasses}>
+                <NavLink to={ABOUT} className={linkClasses}>
                     About
                 </NavLink>
-                <NavLink to="/contact" className={linkClasses}>
+                <NavLink to={CONTACT} className={linkClasses}>
                     Contact
                 </NavLink>
-                {/* <a href=""><li>Home</li></a>
-                <a href=""><li>Services</li></a>
-                <a href=""><li>About</li></a> */}
             </ul>
-            <a href="/UserLogin" className="login">Login</a>
+            <Link to={LOGIN} className="login">Login</Link>
         </div>
     )
 }

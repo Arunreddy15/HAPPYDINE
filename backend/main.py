@@ -34,7 +34,7 @@ def read_root():
         MESSAGE=f'Please Login through below links or {ep1} or {ep2}'
     except:pass
     return MESSAGE
-@app.post("/UserLogin")
+@app.post("/login")
 def UserLogin(data:UserLogin):
     user=user_collection.find_one({'username':data.username})
     print(user,type(data))
@@ -47,7 +47,7 @@ def UserLogin(data:UserLogin):
         print('User not exists')
         return {'message':'User not exists, Please Register'}
         # return {'message':'User Not Exists, లాగిన్ చెయ్యాలంటే ముందు రిజిస్టర్ అవ్వాలి (ఉచ్చ ఆగుతలేదా బ్రో!)'}
-@app.post("/UserRegister")
+@app.post("/register")
 def UserRegister(data:UserRegister):
     user=user_collection.find_one({'username':data.username})
     email=user_collection.find_one({"email":data.email})

@@ -1,74 +1,73 @@
-import { useState ,useEffect} from 'react'
-import { User,  } from "lucide-react";
-import { LuEye , LuEyeClosed } from "react-icons/lu";
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { User } from "lucide-react";
+import { LuEye, LuEyeClosed } from "react-icons/lu";
+import { allowOnlyAlphanumeric } from '../../utils/InputValidation';
+import { REGISTER, LANDING } from '../../routes/AppRoutes'
+import { URL, USERLOGIN } from '../../routes/AppUrls'
+import { toast } from "react-toastify";
 import axios from "axios"
 import './Login.css'
+
 function Login() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [successmsg,setSuccessmsg]=useState('')
-  // const [token, setToken] = useState('')
-  const [errormsg,setErrormsg]=useState('')
-  const [errormsgup,setErrormsgUP]=useState('')
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  })
   const [isOn, setIsOn] = useState(true)
   const toggle = () => setIsOn(!isOn);
-  function clearMsg() {
-    setTimeout(() => setSuccessmsg(''), 3000);
-  }
-  useEffect(() => {
-    if (username.trim() === "" && password !=='') {
-      setErrormsg("");
-      clearMsg()
-    }
-  }, [username]);
+  const navigate = useNavigate()
   const LoginUser = async () => {
-    if (username==='' || password==='') {
-      setErrormsgUP('Username and Password should not be empty')
+    if (user.username === '' || user.password === '') {
+      toast.error('Username and Password should not be empty')
     }
-    else{
-      if (/^\d+$/.test(username)) {
-        setErrormsgUP('Username should contains alphanumeric')
-      }
-      else{
-        setErrormsgUP('')
-        try {
-          const body ={ username: username, password }
-          const res = await axios.post("http://127.0.0.1:8000/UserLogin", 
-            body
-          );
-          setUsername('');setPassword('')
-          if (res.data.message.includes("Success")){
-            setSuccessmsg(res.data.message)
-            clearMsg()
-          }
-          else{
-            console.log(res.data.message)
-            setSuccessmsg('')
-            setErrormsg(res.data.message)
-          }
-          // setToken(res.data.access_token);
-        } catch (err) {
-          alert(err.response?.data?.detail || "Error");
+    else {
+      try {
+        const body = { username: user.username, password: user.password }
+        const res = await axios.post(`${URL}${USERLOGIN}`, body);
+        setUser({ username: '', password: '' })
+        if (res.data.message.includes("Success")) {
+          toast.success(res.data.message)
+          navigate(LANDING)
+        } else {
+          toast.error(res.data.message)
         }
+      } catch (err) {
+        alert(err.response?.data?.detail || "Error");
       }
     }
   };
+
   return (
     <div className='Login-container'>
-    <div className="login-form">
-      <h3>Sign In Here!</h3>
-      <div className="userpass_con">
-        <input type="text"  value={username} className='' placeholder='Enter Username' onChange={(e)=>setUsername(e.target.value)}/>
-        <User/>
+      <div className="login-form">
+        <h3>Sign In Here!</h3>
+
+        <div className="userpass_con">
+          <input
+            type="text"
+            value={user.username}
+            placeholder='Enter Username'
+            onChange={(e) => setUser({ ...user, username: e.target.value })} 
+            onKeyPress={allowOnlyAlphanumeric}
+          />
+          <User />
+        </div>
+
+        <div className="userpass_con">
+          <input
+            type={isOn ? "password" : "text"} 
+            value={user.password}
+            placeholder='Enter Password'
+            onChange={(e) => setUser({ ...user, password: e.target.value })} 
+          />
+          <button type="button" onClick={toggle}>
+            {isOn ? <LuEyeClosed size={22} color={'#242424'} /> : <LuEye size={22} color={'#242424'} />}
+          </button>
+        </div>
+        <button className="submitbtn" onClick={LoginUser}>Submit</button>
+        <span>Not have an account? <Link to={REGISTER}>Sign Up</Link></span>
       </div>
-      <div className="userpass_con">
-        <input type={isOn&&"password"||"text"}  value={password} className='' placeholder='Enter Password' onChange={(e)=>setPassword(e.target.value)}/>
-        <button onClick={toggle}>{isOn&&< LuEyeClosed size={22} color={'#242424'}/>||<LuEye size={22} color={'#242424'}/>}</button>
-      </div>
-      {successmsg?(<p className='successmsg'>{successmsg}</p>):(errormsgup&& <p className='errormsg'>{errormsgup}</p>||<p className='errormsg'>{errormsg}</p>)}
-      <button className="submitbtn" onClick={LoginUser}>Submit</button>
-      <span>Not have an account? <a href='./UserRegister'>Sign Up</a></span>
-    </div>
     </div>
   )
 }

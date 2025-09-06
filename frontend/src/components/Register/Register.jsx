@@ -1,75 +1,44 @@
-import { useState ,useEffect} from 'react'
+import { useState } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import { User,Mail} from "lucide-react";
 import { LuEye , LuEyeClosed } from "react-icons/lu";
-import confetti from "canvas-confetti";
+import {LOGIN} from '../../routes/AppRoutes'
+import {URL,USERREGISTER} from '../../routes/AppUrls'
 import axios from "axios"
+import { toast } from "react-toastify";
+import { allowOnlyAlphanumeric } from '../../utils/InputValidation';
+import { fireConfetti } from '../../utils/Confetti'; 
 import '../Login/Login.css' 
 function Register() {
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [successmsg,setSuccessmsg]=useState('')
-  // const [token, setToken] = useState('')
-  const [errormsg,setErrormsg]=useState('')
-  const [errormsgup,setErrormsgUP]=useState('')
+  const [newuser, setNewuser]=useState({
+    email:'',username:'',password:''
+  })
   const [isOn, setIsOn] = useState(true)
-  function clearMsg() {
-    setTimeout(() => setSuccessmsg(''), 3000);
-  }
   const toggle = () => setIsOn(!isOn);
-  const fireConfetti = () => {
-    confetti({
-      particleCount: 100,
-      spread: 60,
-      origin: { y: 0.75 ,x:0.25},
-      angle:60,
-       colors: ["#ec0000ff", "#242424"]
-
-    });
-    confetti({
-      particleCount: 100,
-      spread: 60,
-      origin: { y: 0.75 ,x:0.75},
-      angle:120,
-      colors: ["#ec0000ff", "#242424"]
-
-
-    });
-  };
+  const navigate = useNavigate()
   const validateEmail = (value) => {
-    // Basic email regex
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(value);
   };
-  useEffect(() => {
-    if (username.trim() === "") {
-      setErrormsg("");
-    }
-  }, [username]);
+  
   const RegisterUser = async () => {
-    if (username==='' || password==='' || email==='') {
-      setErrormsgUP('Fields should not be empty!')
+    if (newuser.username==='' || newuser.password==='' || newuser.email==='') {
+      toast.error('Fields should not be empty!')
     }
     else{
-      if (/^\d+$/.test(username)) {
-        setErrormsgUP('Username should contains alphanumeric!')
-      }
-      else if (email && !validateEmail(email)){
-        setErrormsgUP('Please enter valid Email Id!')
+      if (newuser.email && !validateEmail(newuser.email)){
+        toast.error('Please enter valid Email Id!')
       }
       else{
-        setErrormsgUP('')
         try {
-          const res = await axios.post("http://127.0.0.1:8000/UserRegister", { email,username, password }
+          const res = await axios.post(`${URL}${USERREGISTER}`, { email:newuser.email,username:newuser.username, password:newuser.password }
           );
-          setEmail('');setUsername('');setPassword('')
           if (res.data.message.includes("Success")){
-            setSuccessmsg(res.data.message)
-            fireConfetti();
-            clearMsg()
+            toast.success(res.data.message)
+            fireConfetti()
+            navigate(LOGIN)
           }else{
-            setSuccessmsg('')
-            setErrormsg(res.data.message)
+            toast.error(res.data.message)
           }
           // setToken(res.data.access_token);
         } catch (err) {
@@ -78,25 +47,25 @@ function Register() {
       }
     }
   };
+
   return (
     <div className='Register-container'>
     <div className="register-form">
       <h3>Sign Up Here!</h3>
       <div className="userpass_con">
-        <input type="email" value={email} className='' placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)}/>
+        <input type="email" value={newuser.email} className='' placeholder='Enter Email' onChange={(e)=>setNewuser({...newuser,email:e.target.value})}/>
         <Mail />
       </div>
       <div className="userpass_con">
-        <input type="text"  className='' value={username} placeholder='Enter Username' onChange={(e)=>setUsername(e.target.value)}/>
+        <input type="text"  className='' value={newuser.username} placeholder='Enter Username' onChange={(e)=>setNewuser({...newuser,username:e.target.value})} onKeyPress={allowOnlyAlphanumeric}/>
         <User/>
       </div>
       <div className="userpass_con">
-        <input type={isOn&&"password"||"text"}  value={password} className='' placeholder='Enter Password' onChange={(e)=>setPassword(e.target.value)}/>
+        <input type={isOn&&"password"||"text"}  value={newuser.password} className='' placeholder='Enter Password' onChange={(e)=>setNewuser({...newuser,password:e.target.value})}/>
         <button onClick={toggle}>{isOn&&< LuEyeClosed size={22} color={'#242424'}/>||<LuEye size={22} color={'#242424'}/>}</button>
       </div>
-      {successmsg&& <p className='successmsg'>{successmsg}</p>||errormsgup&& <p className='errormsg'>{errormsgup}</p>||<p className='errormsg'>{errormsg}</p>}
       <button className="submitbtn" onClick={RegisterUser}>Submit</button>
-      <span>Already have an account? <a href='./UserLogin'>Sign In</a></span>
+      <span>Already have an account? <Link to={LOGIN}>Sign In</Link></span>
     </div>
     </div>
   )
