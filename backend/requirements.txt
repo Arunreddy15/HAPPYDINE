@@ -3,3 +3,5 @@ pymongo[srv]
 passlib[bcrypt]
 pydantic[email]
 uvicorn
+python-jose
+python-multipart

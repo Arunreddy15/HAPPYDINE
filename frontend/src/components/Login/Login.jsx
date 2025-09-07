@@ -23,11 +23,13 @@ function Login() {
     }
     else {
       try {
-        const body = { username: user.username, password: user.password }
+        const body = new URLSearchParams({ username: user.username, password: user.password })
         const res = await axios.post(`${URL}${USERLOGIN}`, body);
         setUser({ username: '', password: '' })
         if (res.data.message.includes("Success")) {
           toast.success(res.data.message)
+          localStorage.setItem("token", res.data.access_token)
+          console.log(res.data.access_token)
           navigate(LANDING)
         } else {
           toast.error(res.data.message)

@@ -1,8 +1,11 @@
 from passlib.context import CryptContext
-from fastapi import FastAPI
+from fastapi.security import OAuth2PasswordRequestForm
+from fastapi import FastAPI, Depends, HTTPException
 from model import UserRegister,UserLogin
 from fastapi.middleware.cors import CORSMiddleware
 from DB import user_collection
+from jose import JWTError, jwt
+from datetime import datetime, timedelta
 app = FastAPI()
 origins = [
     "http://localhost:5173",   # Vite dev server
@@ -17,7 +20,10 @@ app.add_middleware(
     allow_methods=["*"],              # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],              # Allow all headers
 )
-
+# Secret key to sign the JWT
+SECRET_KEY = "supersecretkey123"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
@@ -25,6 +31,13 @@ def hash_password(password: str) -> str:
 
 def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
+
+def create_access_token(sub_data: dict, expires_delta: timedelta = None):
+    to_encode = sub_data.copy()
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    to_encode.update({"exp": expire})
+    token = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return token
 @app.get("/")
 def read_root():
     MESSAGE=''
@@ -35,14 +48,19 @@ def read_root():
     except:pass
     return MESSAGE
 @app.post("/login")
-def UserLogin(data:UserLogin):
+def UserLogin(data:OAuth2PasswordRequestForm=Depends()):
     user=user_collection.find_one({'username':data.username})
     print(user,type(data))
     if user:
-        if not user or verify_password(data.password,user['password']):
-        # if user['password']==data.password:
-            return {"message": "Logged Success", "user": data.username}
-        else:return {"message": "Username or Password didn't matched", "user": data.username}
+        if not user or not verify_password(data.password,user['password']):
+            raise HTTPException(status_code=400, detail="Invalid credentials")
+        
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        access_token = create_access_token(
+            sub_data={"sub": data.username},
+            expires_delta=access_token_expires
+        )
+        return {"message": "Logged Success","access_token": access_token, "token_type": "bearer"}
     else:
         print('User not exists')
         return {'message':'User not exists, Please Register'}
