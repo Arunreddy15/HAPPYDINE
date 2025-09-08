@@ -11,6 +11,7 @@ import Fish from '../images/fish.png'
 import Icecream from '../images/icecream.png'
 import Wings from '../images/wings.png'
 import Header from "../Header/Header";
+// import {ICECREAM,MUTTON,CHICKEN,PIZZA,SAMOSA,BIRYANI,FISH,WINGS} from '../../utils/images'
 export default function LaunchPage() {
   return (
   <>
