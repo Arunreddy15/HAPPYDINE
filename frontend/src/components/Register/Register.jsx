@@ -2,11 +2,13 @@ import { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import { User,Mail} from "lucide-react";
 import { LuEye , LuEyeClosed } from "react-icons/lu";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 import {LOGIN} from '../../routes/AppRoutes'
 import {URL,USERREGISTER} from '../../routes/AppUrls'
 import axios from "axios"
 import { toast } from "react-toastify";
 import { allowOnlyAlphanumeric } from '../../utils/InputValidation';
+import Meal from "../../assets/meal.jpg"
 import { fireConfetti } from '../../utils/Confetti'; 
 import '../Login/Login.css' 
 function Register() {
@@ -50,23 +52,34 @@ function Register() {
 
   return (
     <div className='Register-container'>
-    <div className="register-form">
-      <h3>Sign Up Here!</h3>
-      <div className="userpass_con">
-        <input type="email" value={newuser.email} className='' placeholder='Enter Email' onChange={(e)=>setNewuser({...newuser,email:e.target.value})}/>
-        <Mail />
+      <div className='Inner-container'>
+      
+        
+        <div className="right_side">
+          <div className="register-form">
+            <h3>Sign Up Here!</h3>
+            <div className="userpass_con">
+              <input type="email" value={newuser.email} className='' placeholder='Email' onChange={(e)=>setNewuser({...newuser,email:e.target.value})}/>
+              <Mail className='icons' />
+            </div>
+            <div className="userpass_con">
+              <input type="text"  className='' value={newuser.username} placeholder='Username' onChange={(e)=>setNewuser({...newuser,username:e.target.value})} onKeyPress={allowOnlyAlphanumeric}/>
+              <User className='icons'/>
+            </div>
+            <div className="userpass_con">
+              <input type={isOn&&"password"||"text"}  value={newuser.password} className='' placeholder='Password' onChange={(e)=>setNewuser({...newuser,password:e.target.value})}/>
+              <button onClick={toggle}>{isOn&&< LuEyeClosed size={22} className='icons'/>||<LuEye size={22} className='icons'/>}</button>
+            </div>
+            <button className="submitbtn" onClick={RegisterUser}>Submit</button>
+            <span>or signup with</span>
+            <button className="submitbtn Gg" > <FaGoogle/> Google</button>
+            <button className="submitbtn Fb" ><FaFacebook/> Facebook</button>
+                        
+            <span>Already have an account? <Link to={LOGIN} className='links-lr'>Sign In</Link></span>
+          </div>
+        </div>
+        <img src={Meal} className='side-image'/>
       </div>
-      <div className="userpass_con">
-        <input type="text"  className='' value={newuser.username} placeholder='Enter Username' onChange={(e)=>setNewuser({...newuser,username:e.target.value})} onKeyPress={allowOnlyAlphanumeric}/>
-        <User/>
-      </div>
-      <div className="userpass_con">
-        <input type={isOn&&"password"||"text"}  value={newuser.password} className='' placeholder='Enter Password' onChange={(e)=>setNewuser({...newuser,password:e.target.value})}/>
-        <button onClick={toggle}>{isOn&&< LuEyeClosed size={22} color={'#242424'}/>||<LuEye size={22} color={'#242424'}/>}</button>
-      </div>
-      <button className="submitbtn" onClick={RegisterUser}>Submit</button>
-      <span>Already have an account? <Link to={LOGIN}>Sign In</Link></span>
-    </div>
     </div>
   )
 }
