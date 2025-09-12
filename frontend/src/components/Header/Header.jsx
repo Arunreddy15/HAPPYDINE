@@ -9,7 +9,9 @@ function Header(){
 
     return(
         <div className="Header-contianer">
-            <h2 className="logo">HappyDine</h2>
+            <h2 className="logo">Dineezy
+                {/* HappyDine */}
+                </h2>
             <ul>
                 <NavLink to={HOME} className={linkClasses}>
                     Home
