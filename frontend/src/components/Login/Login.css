@@ -16,6 +16,7 @@ body{
 }
 .side-image{
   height:  580px;
+<<<<<<< HEAD
   border: 1px solid transparent;
 }
 .right_side{
@@ -24,6 +25,11 @@ body{
   align-items: center;
   width: 100%;
 }
+=======
+  /* border-radius: 12px; */
+  border: 1px solid transparent;
+}
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
 .Inner-container{
   display: flex;
   align-items: center;
@@ -38,19 +44,31 @@ body{
 .login-form{
   border-radius: 12px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+<<<<<<< HEAD
   /* width: 100%; */
+=======
+  width: 100%;
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
   min-height: 250px;
   height: 100%;
   margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   padding: 10px 50px;
   /* background-color: #beb4b4; */
 }
 .register-form{
     border-radius: 12px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+=======
+  padding: 10px 5px;
+}
+.register-form{
+    border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
   width: 400px;
   min-height: 250px;
   height: auto;
@@ -100,6 +118,16 @@ body{
   padding: 0;
   outline: none;
   margin: 0;
+<<<<<<< HEAD
+=======
+}
+.errormsg{
+  color: red;
+  font-size: 14px;
+  /* height: 25px; */
+  margin: 2px 0;
+  transition: "all 0.5s ease-in-out"
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
 }
 .successmsg{
   color: rgb(26, 201, 26);
@@ -114,12 +142,21 @@ body{
   border-radius: 8px;
   border: 1px solid #00a9a5;
   padding: 0.6em 1.2em;
+<<<<<<< HEAD
   font-size: .9em;
   font-weight: 600;
+=======
+  font-size: .8em;
+  font-weight: 500;
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
   font-family: inherit;
   cursor: pointer;
   align-self: center;
   background-color: #00a9a5;
+<<<<<<< HEAD
+=======
+  color: white;
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
   margin-bottom: 10px;
   max-width: 280px;
   width: 100%;
@@ -131,6 +168,7 @@ body{
   gap: 6px;
 }
 span{
+<<<<<<< HEAD
   font-size: 13px;
   margin: 7px 0;
   color: #00a9a5;
@@ -142,6 +180,14 @@ span{
   align-self: flex-end;
   margin-right: 10px;
   color: white;
+=======
+  font-size: 12px;
+  margin: 5px 0;
+  color: #00a9a5;
+}
+.forgotpwd{
+  align-self: flex-end
+>>>>>>> 799c49dee698a8f5aabd7abf970b9af932aaaeb6
 }
 .Gg,.Fb{
   background-color: transparent;
