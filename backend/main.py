@@ -7,6 +7,7 @@ from DB import user_collection
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 app = FastAPI()
+
 origins = [
     "http://localhost:5173",   # Vite dev server
     "http://127.0.0.1:5173",   # sometimes needed

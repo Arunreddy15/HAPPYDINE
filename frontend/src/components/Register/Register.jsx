@@ -55,6 +55,7 @@ function Register() {
       <div className='Inner-container'>
       
         
+        <img src={Meal} className='side-image'/>
         <div className="right_side">
           <div className="register-form">
             <h3>Sign Up Here!</h3>
@@ -72,13 +73,16 @@ function Register() {
             </div>
             <button className="submitbtn" onClick={RegisterUser}>Submit</button>
             <span>or signup with</span>
-            <button className="submitbtn Gg" > <FaGoogle/> Google</button>
-            <button className="submitbtn Fb" ><FaFacebook/> Facebook</button>
+            <div className='social-icons-parent'>
+              <div className='social-icons'><FaGoogle size={20} /></div>
+              <div className='social-icons'><FaFacebook size={22}/></div>
+            </div>
+            {/* <button className="submitbtn Gg" > <FaGoogle/> Google</button>
+            <button className="submitbtn Fb" ><FaFacebook/> Facebook</button> */}
                         
             <span>Already have an account? <Link to={LOGIN} className='links-lr'>Sign In</Link></span>
           </div>
         </div>
-        <img src={Meal} className='side-image'/>
       </div>
     </div>
   )
