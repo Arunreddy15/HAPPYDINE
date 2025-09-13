@@ -16,7 +16,6 @@ body{
 }
 .side-image{
   height:  580px;
-  border: 1px solid transparent;
 }
 .right_side{
   display: flex;
@@ -30,10 +29,12 @@ body{
   background-color: white;
   overflow: hidden;
   position: relative;
-  border-radius: 12px;
+  border-radius: 22px;
   width: 55%;
   background-size: cover;
   background-color: #092327;
+  margin: 0;
+  padding: 0;
 }
 .login-form{
   border-radius: 12px;
@@ -62,8 +63,14 @@ body{
   color: #fff;
   font-weight: bold;
 }
-.login-form input::placeholder,.register-form input::placeholder,h3{
+.login-form input::placeholder,.register-form input::placeholder{
   color: #fff;
+  font-size: 12px;
+}
+h3{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 .userpass_con{
   display: flex;
@@ -71,7 +78,7 @@ body{
   align-items: center;
   border: 1px solid #00a9a5;
   width: 280px;
-  height: 40px;
+  height: 45px;
   margin: 8px 0;
   border-radius: 24px;
   overflow: hidden;
@@ -88,6 +95,7 @@ body{
   border: 1px solid transparent;
   outline: none;
   background: transparent;
+  font-size: 14px;
 }
 .userpass_con button{
   border: none;
@@ -137,12 +145,11 @@ span{
   color: white;
 }
 .social-icons{
-  color: #fff;
+  color: #092327;
   background-color: #00a9a5;
   height: 35px;
   width: 35px;
   margin: 0 10px;
-  /* padding: 10px; */
   border-radius: 50%;
   display: flex;
   justify-content: center;
