@@ -1,7 +1,10 @@
 from pymongo.mongo_client import MongoClient
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Directly use your connection URI
-uri = "mongodb+srv://arunreddyb15:123456pymongo@pycluster.bbhtx.mongodb.net/?retryWrites=true&w=majority&appName=PYCluster"
+uri = os.getenv("CONNECTIONSTRING")
 
 try:
     client=MongoClient(uri)
