@@ -5,6 +5,7 @@ from model import UserRegister,UserLogin
 from fastapi.middleware.cors import CORSMiddleware
 from DB import user_collection
 from jose import JWTError, jwt
+
 from datetime import datetime, timedelta
 app = FastAPI()
 
