@@ -5,7 +5,8 @@ import Register from "../components/Register/Register";
 import About from "../components/About/About";
 import Contact from "../components/Contact/Contact";
 import LaunchPage from "../components/Home/Home";
-import {REGISTER,LOGIN,HOME,ABOUT,CONTACT,LANDING} from "./AppRoutes";
+import Howitwork from "../components/Howitwork/Howitwork";
+import {REGISTER,LOGIN,HOME,ABOUT,CONTACT,LANDING,HOWITWORK} from "./AppRoutes";
 import LandingPage from "../components/LandingPage";
 import "../App.css"
 export default function AppNavigation() {
@@ -19,6 +20,7 @@ export default function AppNavigation() {
         <Route path={ABOUT} element={<About/>} />
         <Route path={CONTACT} element={<Contact/>} />
         <Route path={LANDING} element={<LandingPage/>} />
+        <Route path={HOWITWORK} element={<Howitwork/>}/>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>

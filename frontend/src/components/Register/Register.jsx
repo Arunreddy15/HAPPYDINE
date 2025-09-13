@@ -55,7 +55,7 @@ function Register() {
       <div className='Inner-container'>
       
         
-        <img src={Meal} className='side-image'/>
+        <img src='https://images.unsplash.com/photo-1727404679933-99daa2a7573a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' className='side-image'/>
         <div className="right_side">
           <div className="register-form">
             <h3>Sign Up Here!</h3>

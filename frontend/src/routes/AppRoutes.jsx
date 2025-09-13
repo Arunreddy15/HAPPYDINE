@@ -4,5 +4,5 @@ const HOME="/";
 const ABOUT="/about";
 const CONTACT="/contact";
 const LANDING="/landing";
-
-export {REGISTER,LOGIN,HOME,ABOUT,CONTACT,LANDING}
+const HOWITWORK="/howitwork";
+export {REGISTER,LOGIN,HOME,ABOUT,CONTACT,LANDING,HOWITWORK}
