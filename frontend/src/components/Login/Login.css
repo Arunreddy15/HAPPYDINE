@@ -12,7 +12,7 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgba(215, 216, 219, 0.926);
+  background-color: rgba(42, 185, 185, 0.678);
 }
 .side-image{
   height:  580px;
@@ -29,12 +29,14 @@ body{
   background-color: white;
   overflow: hidden;
   position: relative;
-  border-radius: 22px;
-  width: 55%;
+  border-radius: 22px 0 22px 0;
+  width: 70%;
   background-size: cover;
   background-color: #092327;
   margin: 0;
   padding: 0;
+  box-shadow: 0 4px 8px rgba(13, 66, 66, 0.77); 
+  /* border-bottom-left-radius: 0; */
 }
 .login-form{
   border-radius: 12px;
@@ -48,9 +50,7 @@ body{
   padding: 10px 50px;
 }
 .register-form{
-    border-radius: 12px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-  width: 400px;
+  border-radius: 12px;
   min-height: 250px;
   height: auto;
   display: flex;
@@ -65,7 +65,7 @@ body{
 }
 .login-form input::placeholder,.register-form input::placeholder{
   color: #fff;
-  font-size: 12px;
+  font-size: .85rem;
 }
 h3{
   color: white;

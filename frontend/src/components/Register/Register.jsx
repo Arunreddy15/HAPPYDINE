@@ -54,11 +54,12 @@ function Register() {
     <div className='Register-container'>
       <div className='Inner-container'>
       
-        
-        <img src='https://images.unsplash.com/photo-1727404679933-99daa2a7573a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' className='side-image'/>
+        <img src='https://i.postimg.cc/7ZQ1PVjK/register.jpg' className='side-image'/>
+        {/* <img src='https://images.unsplash.com/photo-1727404679933-99daa2a7573a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' className='side-image'/> */}
         <div className="right_side">
           <div className="register-form">
             <h3>Sign Up Here!</h3>
+            <span>Join us today to explore amazing features.</span>
             <div className="userpass_con">
               <input type="email" value={newuser.email} className='' placeholder='Email' onChange={(e)=>setNewuser({...newuser,email:e.target.value})}/>
               <Mail className='icons' />

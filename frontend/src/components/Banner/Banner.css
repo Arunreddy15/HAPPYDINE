@@ -1,0 +1,94 @@
+#banner{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* background-image: url('https://images.unsplash.com/photo-1676436293945-a613dde9c3b6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.banner-inner-container{
+    width: 85%;
+    height: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background-color: transparent;
+    padding: 25px 40px;
+    box-shadow: 0 4px 8px rgb(191, 244, 244); 
+    position: relative;
+    overflow: hidden;
+}
+.bg-box{
+    background-color: #092327;
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: -5%;
+    right: -30%;
+    border-bottom-left-radius: 50px;
+    transform: rotate(35deg);
+    z-index: -1;
+}
+.banner-main-img{
+    z-index: 2;
+    height: 400px;
+    margin: 0 10px 10px 0;
+}
+.banner-rightside-info{
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 20px;
+    width: 50%;
+    /* height: 90vh; */
+}
+.banner-feedback-info{
+    display: flex;
+    align-items: center;
+}
+.banner-rightside-info .heading{
+    font-size: 1.6rem;
+}
+.banner-rightside-info .description{
+    font-size: 16px;
+    color: #092327;
+    width: auto;
+    margin: 25px 0;
+}
+.dwnld-btn{
+    background-color: #092327;
+    color: white;
+    max-width:100px;
+    width:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.rating-container,.feedback-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.rating-container .rating{
+    color: #092327;
+    font-size: 18px;
+    font-weight: bold;
+    /* margin-bottom: 15px; */
+}
+.feedback-container p{
+    font-weight: bold;
+}

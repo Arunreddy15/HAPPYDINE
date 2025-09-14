@@ -5,8 +5,9 @@ from model import UserRegister,UserLogin
 from fastapi.middleware.cors import CORSMiddleware
 from DB import user_collection
 from jose import JWTError, jwt
-
+from bson import ObjectId
 from datetime import datetime, timedelta
+from passlib.hash import bcrypt
 app = FastAPI()
 
 origins = [
@@ -26,13 +27,13 @@ app.add_middleware(
 SECRET_KEY = "supersecretkey123"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    return bcrypt.hash(password)
 
 def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
+    return bcrypt.verify(plain, hashed)
 
 def create_access_token(sub_data: dict, expires_delta: timedelta = None):
     to_encode = sub_data.copy()
@@ -80,5 +81,18 @@ def UserRegister(data:UserRegister):
         return {"message": "User added Successfully"}
         # return {"message": "User added Successfully!"}
     # return 'Please Register here😊!'
+@app.put("/reset-password")
+def ResetPassword(data:OAuth2PasswordRequestForm=Depends()):
+    user=user_collection.find_one({'username':data.username})
+    if user:
+        user_collection.update_one(
+            {"_id":ObjectId(user['_id'])},
+            {"$set":{"password":hash_password(data.password)}}
+        )
+        print({'message':'Password reset Success, Please login'})
+        return{'message':'Password reset Success, Please login'}
+    else:
+        print('User not exists')
+        return {'message':'User not exists, Please Register'}
 # if __name__ == "__main__":
 #     uvicorn.run(host="0.0.0.0", port=8000, reload=True)

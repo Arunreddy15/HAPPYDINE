@@ -4,7 +4,7 @@ import { User } from "lucide-react";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { allowOnlyAlphanumeric } from '../../utils/InputValidation';
-import { REGISTER, LANDING } from '../../routes/AppRoutes'
+import { REGISTER, LANDING ,RESETPASSWORD} from '../../routes/AppRoutes'
 import { URL, USERLOGIN } from '../../routes/AppUrls'
 import { toast } from "react-toastify";
 import axios from "axios"
@@ -37,7 +37,8 @@ function Login() {
           toast.error(res.data.message)
         }
       } catch (err) {
-        alert(err.response?.data?.detail || "Error");
+        toast.error(err.response?.data?.detail || "Error")
+        // alert(err.response?.data?.detail || "Error");
       }
     }
   };
@@ -74,7 +75,7 @@ function Login() {
                 {isOn ? <LuEyeClosed size={22} className='icons'/> : <LuEye size={22} className='icons' />}
               </button>
             </div>
-            <Link to={REGISTER} className='links-lr forgotpwd'><span>Forgot Password?</span></Link>
+            <Link to={RESETPASSWORD} className='links-lr forgotpwd'><span>Forgot Password?</span></Link>
             <button className="submitbtn" onClick={LoginUser}>Submit</button>
             <span>or login with</span>
             <div className='social-icons-parent'>
@@ -86,7 +87,8 @@ function Login() {
             <span>Did not have an account? <Link to={REGISTER} className='links-lr'>Sign Up</Link></span>
           </div>
         </div>
-        <img src={Pasta} className='side-image'/>
+        {/* <img src={Pasta} className='side-image'/> */}
+        <img src='https://i.postimg.cc/PJcY4rh1/login.jpg' className='side-image'/>
       </div>
     </div>
   )

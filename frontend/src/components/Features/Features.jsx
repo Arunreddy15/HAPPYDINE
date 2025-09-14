@@ -1,6 +1,7 @@
 import React from 'react'
 import './Features.css'
 import { Search, Calendar, Star, MapPin, CreditCard, Users } from "lucide-react";
+
 const features = [
   {
     icon: Search,

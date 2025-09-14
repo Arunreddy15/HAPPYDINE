@@ -32,9 +32,9 @@ ul a{
     text-decoration: none;
     padding: 5px 15px;
     font-size: 16px;
-    color: black;
+    color: #092327;
 }
-.login{
+.Header-contianer .login{
     color: white;
     border-radius: 14px;
     text-decoration: none;

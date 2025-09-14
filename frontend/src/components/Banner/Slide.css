@@ -1,0 +1,31 @@
+.slider-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 80px;
+}
+.slider-inner-container{
+    max-width: 50%;
+    width: 33%;
+    background-color: transparent;
+    padding: 0;
+}
+.image-container img{
+    height: 500px;
+}
+.image-container{
+    border-radius: 14px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    /* background-color: blanchedalmond; */
+}
+.image-container h3{
+    color: #092327;
+    position: absolute;
+    background-color: rgb(191, 244, 244);
+    bottom: 5%;
+    padding: 0 20px 0 10px;
+    border-radius:0 50px 50px 0 ;
+}
