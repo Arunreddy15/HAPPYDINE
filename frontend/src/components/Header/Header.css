@@ -1,47 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=EB+Garamond:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.Header-contianer{
-    padding:20px 80px ;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    font-family: "Poppins", sans-serif;
-    height: 2.5rem;
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=EB+Garamond:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.Header-contianer {
+  padding: 20px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  height: 2.5rem;
 }
-.logo{
-    font-family: "Poppins", sans-serif;
-    font-weight: 800;
-    font-size: 40px;
+.logo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 40px;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: url("https://i.postimg.cc/GhJ9QxV5/salad.jpg") no-repeat center/cover;
-  -webkit-background-clip: text;   
-  background-clip: text;        
-  color: transparent; 
+  background: url("https://i.postimg.cc/GhJ9QxV5/salad.jpg") no-repeat
+    center/cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-ul{
-    display: flex;
-    gap: 15px;
-    /* width: auto; */
+ul {
+  display: flex;
+  gap: 15px;
+  /* width: auto; */
 }
-ul li{
-    list-style: none;
+ul li {
+  list-style: none;
 }
-ul a{
-    text-decoration: none;
-    padding: 5px 15px;
-    font-size: 16px;
-    color: black;
+ul a {
+  text-decoration: none;
+  padding: 5px 15px;
+  font-size: 16px;
+  color: black;
 }
-.login{
-    color: white;
-    border-radius: 14px;
-    text-decoration: none;
-    padding: 5px 15px;
-    font-size: 16px;
-    background-color:#242424;
+.login {
+  color: white;
+  border-radius: 14px;
+  text-decoration: none;
+  padding: 5px 15px;
+  font-size: 16px;
+  background-color: #242424;
 }
-.activte{
-    font-weight: bold;
+.activte {
+  font-weight: bold;
 }

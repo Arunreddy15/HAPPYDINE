@@ -10,18 +10,18 @@ import { toast } from "react-toastify";
 import axios from "axios"
 import Pasta from "../../assets/chickenidle.jpg"
 import './Login.css'
+import { en } from '../../i18n/content';
+import Image from '../Image/Image';
 
 function Login() {
-  const [user, setUser] = useState({
-    username: '',
-    password: ''
-  })
-  const [isOn, setIsOn] = useState(true)
+  const [user, setUser] = useState({username: '', password: ''})
+  const [isOn, setIsOn] = useState(true);
   const toggle = () => setIsOn(!isOn);
   const navigate = useNavigate()
+
   const LoginUser = async () => {
     if (user.username === '' || user.password === '') {
-      toast.error('Username and Password should not be empty')
+      toast.error(`${en.validations.usernamePasswordRequired}`)
     }
     else {
       try {
@@ -45,14 +45,11 @@ function Login() {
   return (
     <div className='Login-container'>
       <div className='Inner-container'>
-
-        {/* <img src={Pasta} className='side-image'/> */}
         <div className="right_side">
           <div className="login-form">
-            <h3>Welcome Back!</h3>
-            <span>Sign in with your Username and Password.</span>
-
-            <div className="userpass_con">
+            <h3>{en.text.welcome}</h3>
+            <span>{en.text.loginInstructions}</span>
+            <div className="form-group">
               <input
                 type="text"
                 value={user.username}
@@ -62,8 +59,7 @@ function Login() {
               />
               <User className='icons'/>
             </div>
-
-            <div className="userpass_con">
+            <div className="form-group">
               <input
                 type={isOn ? "password" : "text"} 
                 value={user.password}
@@ -74,19 +70,17 @@ function Login() {
                 {isOn ? <LuEyeClosed size={22} className='icons'/> : <LuEye size={22} className='icons' />}
               </button>
             </div>
-            <Link to={REGISTER} className='links-lr forgotpwd'><span>Forgot Password?</span></Link>
-            <button className="submitbtn" onClick={LoginUser}>Submit</button>
-            <span>or login with</span>
+            <Link to={REGISTER} className='links-lr forgotPwd'><span>{en.buttons.forgotPassword}</span></Link>
+            <button className="submitBtn" onClick={LoginUser}>{en.buttons.submit}</button>
+            <span>{en.text.loginText}</span>
             <div className='social-icons-parent'>
               <div className='social-icons'><FaGoogle size={20} /></div>
               <div className='social-icons'><FaFacebook size={22}/></div>
             </div>
-            {/* <button className="submitbtn Gg" > <FaGoogle/> Google</button>
-            <button className="submitbtn Fb" ><FaFacebook/> Facebook</button> */}
-            <span>Did not have an account? <Link to={REGISTER} className='links-lr'>Sign Up</Link></span>
+            <span>{en.text.accountInstructions}<Link to={REGISTER} className='links-lr'>{en.buttons.signUp}</Link></span>
           </div>
         </div>
-        <img src={Pasta} className='side-image'/>
+        <Image source={Pasta} className='side-image' />
       </div>
     </div>
   )
