@@ -1,0 +1,22 @@
+.logo-design{
+ margin-top:-45px;
+ padding: 0;
+ display: flex;
+ position: relative;
+ height: 100%;
+ color: white;
+}
+.logo-design p{
+    position: absolute;
+    font-weight: bolder;
+}
+.first { top: 0; left: 0; }
+.middle { 
+    top: 0; 
+    left: 29px;
+    font-size: 30px;
+    margin-top: 2px;
+    padding: 0;
+    margin-left:-1.5px ;
+ }
+.last { top: 9.5px; left: 45px;margin-left:-2px ; }

@@ -1,8 +1,4 @@
 import Contact from "../components/Contact/Contact";
-// import LaunchPage from "../components/Home/Home";
-import Howitwork from "../components/Howitwork/Howitwork";
-import Features from "./Features/Features";
-import Logo from "./Login/Logo";
 import Restaurants from "./Restaurants/Restaurants";
 import Transfer from "./Transfer/Transfer";
 import Banner from "./Banner/Banner";
@@ -16,8 +12,6 @@ export default function LandingPage() {
       <main>
         <Banner/>
         <Slide/>
-        <Features/>
-        <Howitwork/>
         <Restaurants/>
         <Transfer/>
         <Contact/>
