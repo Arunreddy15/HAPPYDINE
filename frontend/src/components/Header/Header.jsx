@@ -1,6 +1,6 @@
 import "./Header.css"
 import { Link, NavLink } from "react-router-dom";
-import {REGISTER,LOGIN,HOME,ABOUT} from '../../routes/AppRoutes'
+import {REGISTER,LOGIN,HOME,ABOUT} from '../../routes/routes'
 function Header(){
     // const linkClasses = ({ isActive }) =>
     // isActive
